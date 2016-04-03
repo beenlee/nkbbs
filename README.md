@@ -10,7 +10,7 @@
 
 ### 开始
 
-首先需要安装[cordova](!http://cordova.apache.org/)
+首先需要安装[cordova](http://cordova.apache.org/)
 
 clone下项目后本地执行一次 `sh init_project.sh` 初始化开发环境。
 
