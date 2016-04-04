@@ -14,21 +14,43 @@ exports.output = path.resolve(__dirname, 'output');
 // var pageEntries = 'html,htm,phtml,tpl,vm';
 
 exports.getProcessors = function () {
-    var lessProcessor = new LessCompiler();
+    var Versioning = require('edp-build-versioning');
+    var cssFiles = ['src/css/*.less', 'src/css/*.css'];
+
+    var LessPluginEst = require('less-plugin-est');
+    var est = new LessPluginEst();
+    var lessProcessor = new LessCompiler({
+        less: require('less'),
+        files: cssFiles,
+        compileOptions: {
+            plugins: [est]
+        }
+    });
+
     var cssProcessor = new CssCompressor();
     var moduleProcessor = new ModuleCompiler();
     var jsProcessor = new JsCompressor();
     var pathMapperProcessor = new PathMapper();
     var addCopyright = new AddCopyright();
 
+    var versionProcessor = new Versioning({
+        rename: true,
+        require: {
+            combine: true,
+            outputByPage: true
+        },
+        cssURL: true,
+        filePaths: ['src/css/index.less']
+    });
+
     return {
         'default': [
-            lessProcessor, moduleProcessor, pathMapperProcessor
+            lessProcessor, moduleProcessor, versionProcessor, pathMapperProcessor
         ],
 
         'release': [
             lessProcessor, cssProcessor, moduleProcessor,
-            jsProcessor, pathMapperProcessor, addCopyright
+            jsProcessor, versionProcessor, pathMapperProcessor, addCopyright
         ]
     };
 };
@@ -37,6 +59,7 @@ exports.exclude = [
     'tool',
     'doc',
     'test',
+    'project',
     'module.conf',
     'dep/packages.manifest',
     'dep/*/*/test',
@@ -57,7 +80,11 @@ exports.exclude = [
     '.DS_Store',
     '*.tmp',
     '*.bak',
-    '*.swp'
+    '*.swp',
+    '*.sh',
+    'package.json',
+    'README.md',
+    'node_modules'
 ];
 
 /* eslint-disable guard-for-in */

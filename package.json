@@ -18,5 +18,10 @@
     "author": "",
     "repository": "empty",
     "license": "BSD",
-    "readme": "README"
+    "readme": "README",
+    "devDependencies": {
+        "edp-build-versioning": "^0.1.11",
+        "less": "^2.6.1",
+        "less-plugin-est": "^2.0.4"
+    }
 }
