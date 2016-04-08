@@ -8,7 +8,7 @@
 exports.less = require('less');
 var LessPluginEst = require('less-plugin-est');
 var est = new LessPluginEst();
-console.log(est);
+
 exports.port = 8848;
 exports.directoryIndexes = true;
 exports.documentRoot = __dirname;

@@ -36,10 +36,10 @@ var app = {
         function ready() {
             app.receivedEvent();
         }
-        setTimeout(ready, 3000);
+        setTimeout(ready, 2000);
     },
     // Update DOM on a Received Event
-    receivedEvent: function() {
+    receivedEvent: function () {
         var intro = document.getElementById('intro');
         var app = document.getElementById('app');
         intro.style.display = 'none';
