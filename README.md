@@ -30,6 +30,6 @@ npm install -g edp
 
 ### License
 
-本项目完全开源，如果有同学感兴趣可以加入~ 欢迎提ISSUE，发PR。
+本项目遵守[GPL](http://www.gnu.org/licenses/gpl.html)开源协议，欢迎提ISSUE，发PR。
 
 
